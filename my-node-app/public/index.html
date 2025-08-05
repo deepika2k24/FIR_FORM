@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FIR Information Form</title>
+    <style>
+        body {
+            background-image: url("https://img.freepik.com/premium-photo/law-justice-concept-image-themis-symbol-law-dark-background_1421-8150.jpg");
+            background-color: rgb(0, 4, 5);
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            font-family: Arial, sans-serif;
+            width: 90%;
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 15px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            box-sizing: border-box;
+            border: 2px solid #000;
+            border-radius: 4px;
+        }
+        input[type="file"] {
+            border: none;
+        }
+        .full-width {
+            grid-column: 1 / 3;
+        }
+        .section-header {
+            grid-column: 1 / 3;
+            font-size: 18px;
+            background-color: #8d8d92;
+            color: rgb(0, 0, 0);
+            padding: 10px;
+            margin-top: 20px;
+            text-align: center;
+            font-weight: bold;
+            border-radius: 4px;
+        }
+        .upload-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 2px dashed #ccc;
+            padding: 20px;
+            border-radius: 4px;
+        }
+        .submit-btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            grid-column: 1 / 3;
+            text-align: center;
+            border-radius: 4px;
+        }
+        .submit-btn:hover {
+            background-color: #45a049;
+        }
+        .side-by-side {
+            display: flex;
+            gap: 10px;
+        }
+        .side-by-side > div {
+            flex: 1;
+        }
+        .header {
+            font-family:'Times New Roman', Times, serif ;
+            display: flex;
+              flex-direction: column; 
+               align-items: center;    
+               margin-bottom: 20px;
+}
+        .header img {
+            width: 50px;
+            height: auto;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="https://seeklogo.com/images/A/adalet-logo-551A396F76-seeklogo.com.png" alt="Logo">
+            <h1>CRIME INVESTIGATION DEPARTMENT</h1>
+            <h2>FIRST INFORMATION REPORT</h2>
+            
+        </div>
+
+        <div class="section-header">FIR Information</div>
+        <form id="fir-form" action="/submit-fir" method="POST" enctype="multipart/form-data">
+            <div class="side-by-side">
+                <div>
+                    <label for="fir-no">FIR No:</label>
+                    <input type="text" id="fir-no" name="fir_no" required>
+                </div>
+                <div>
+                    <label for="ipc-section">Section IPC (Act):</label>
+                    <input type="text" id="ipc-section" name="ipc_section" required>
+                </div>
+            </div>
+            <div class="side-by-side">
+                <div>
+                    <label for="fir-date">FIR Date:</label>
+                    <input type="date" id="fir-date" name="fir_date" required>
+                </div>
+                <div>
+                    <label for="fir-time">FIR Time:</label>
+                    <input type="time" id="fir-time" name="fir_time" required>
+                </div>
+            </div>
+
+            <div class="side-by-side">
+                <div>
+                    <label for="offence-date">Date of Offence:</label>
+                    <input type="date" id="offence-date" name="offence_date" required>
+                </div>
+                <div>
+                    <label for="offence-time">Time of Offence:</label>
+                    <input type="time" id="offence-time" name="offence_time" required>
+                </div>
+            </div>
+
+            <div class="section-header">Complainant Information</div>
+            <label for="complainant-name">Name of the Complainant:</label>
+            <input type="text" id="complainant-name" name="complainant_name" required>
+
+            <label for="address">Address:</label>
+            <input type="text" id="address" name="address" required>
+
+            <div class="side-by-side">
+                <div>
+                    <label for="district">District:</label>
+                    <input type="text" id="district" name="district" required>
+                </div>
+                <div>
+                    <label for="taluk">Taluk:</label>
+                    <input type="text" id="taluk" name="taluk" required>
+                </div>
+            </div>
+
+            <div class="section-header">Suspect Information</div>
+            <div class="side-by-side">
+                <div>
+                    <label for="age">Age of the Suspect:</label>
+                    <input type="number" id="age" name="age" required>
+                </div>
+                <div>
+                    <label for="nationality">Nationality of the Suspect:</label>
+                    <input type="text" id="nationality" name="nationality" required>
+                </div>
+            </div>
+
+            <label for="valuables-stolen" class="full-width">Valuables Stolen (if any):</label>
+            <textarea id="valuables-stolen" name="valuables_stolen" rows="2" class="full-width"></textarea>
+
+            <div class="section-header">Photocopies</div>
+            <div class="side-by-side">
+                <div class="upload-section">
+                    <label for="written-complaint">Upload Photocopy of Written Complaint:</label>
+                    <input type="file" id="written-complaint" name="written_complaint" accept="image/*, .pdf" required>
+                </div>
+
+                <div class="upload-section">
+                    <label for="signature-file">Upload Signature:</label>
+                    <input type="file" id="signature-file" name="signature_file" accept="image/*" required>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn">Submit FIR</button>
+        </form>
+
+        <div id="submitted-info" style="display:none;"></div>
+        <div id="result" style="display:none;"></div>
+    </div>
+
+    <script>
+        document.getElementById('fir-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            const formData = new FormData(this);
+
+            // Use fetch to submit the form data
+            fetch('/submit-fir', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Display confirmation message
+                displaySubmittedInfo(data.data);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+
+        function displaySubmittedInfo(data) {
+            const submittedInfoDiv = document.getElementById('submitted-info');
+            submittedInfoDiv.innerHTML = ''; // Clear any previous content
+
+            // Format and display the submitted FIR information
+            for (const key in data) {
+                submittedInfoDiv.innerHTML += <strong>${key.replace(/_/g, ' ')}:</strong> ${data[key]}<br>;
+            }
+
+            // Show the result section
+            document.getElementById('result').style.display = 'block';
+            submittedInfoDiv.style.display = 'block'; // Make the submitted info visible
+        }
+    </script>
+</body>
+</html>
