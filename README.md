@@ -14,11 +14,19 @@ This is a lightweight backend for a **First Information Report (FIR)** submissio
 - **Hosting**: Localhost (default port 3000)
 
 ---
+## 🚀 Getting Started  
 
-## 🚀 Getting Started
-
-### ✅ Clone the Repository
+### 1. Clone the Repository  
 ```bash
 git clone https://github.com/deepika2k24/FIR_FORM.git
 cd FIR_FORM/my-node-app
-
+```
+### 2. Install Dependencies
+```bash
+npm install
+```
+### 3. Run the Server
+```bash
+node server.js
+```
+Server runs at 👉 http://localhost:3000/
