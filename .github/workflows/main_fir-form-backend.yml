@@ -63,7 +63,8 @@ jobs:
         with:
           app-name: 'fir-form-backend'
           slot-name: 'Production'
-          package: my-node-app
+          package: .
 
           
+
 
