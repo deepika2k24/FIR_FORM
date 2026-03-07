@@ -69,7 +69,23 @@ app.post('/submit-fir', upload.fields([{ name: 'written_complaint' }, { name: 's
         });
     });
 });
+// Retrieve stored FIR data
+app.get('/fir-data', (req, res) => {
+    const dataPath = path.join(__dirname, 'fir_data.json');
 
+    fs.readFile(dataPath, 'utf8', (err, data) => {
+        if (err) {
+            console.error('Error reading FIR data:', err);
+            return res.status(500).json({ error: 'Unable to read FIR data' });
+        }
+
+        if (!data) {
+            return res.json([]);
+        }
+
+        res.json(JSON.parse(data));
+    });
+});
 // Start the server
 app.listen(PORT, () => {
     console.log(`Server is running at http://localhost:${PORT}`);
